@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A responsive blogging platform for content creators with SEO optimization and monetization options">
+    <meta name="keywords" content="blog, blogging tool, SEO, content creation, AdSense">
+    <meta name="author" content="patelmahammadnuh">
+    <meta name="robots" content="index, follow">
+    <title>BlogMaster Pro - Responsive Blogging Tool</Blog-Master-Pro>
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="BlogMaster Pro">
+    <meta property="og:description" content="A responsive blogging platform for content creators">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourblogmasterpro.com">
+    <meta property="og:image" content="https://yourblogmasterpro.com/images/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourblogmasterpro.com">
+    
+    <!-- Structured Data / Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "BlogMaster Pro",
+      "url": "https://yourblogmasterpro.com",
+      "description": "A responsive blogging platform for content creators",
+      "applicationCategory": "BloggingTool",
+      "operatingSystem": "Web"
+    }
+    </script>
+    
+    <!-- CSS -->
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --danger-color: #e74c3c;
+            --warning-color: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary-color);
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .content-area {
+            flex: 3;
+            min-width: 300px;
+        }
+        
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .card h2 {
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+            border-bottom: 2px solid var(--light-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        .search-container {
+            margin-bottom: 2rem;
+        }
+        
+        .search-box {
+            display: flex;
+            margin-bottom: 1rem;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px 0 0 5px;
+            font-size: 1rem;
+        }
+        
+        .search-box button {
+            padding: 0 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            background-color: var(--light-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .blog-post {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .blog-post:last-child {
+            border-bottom: none;
+        }
+        
+        .blog-post h3 {
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .blog-post .meta {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-post .excerpt {
+            margin-bottom: 1rem;
+        }
+        
+        .blog-post .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .ad-container {
+            background-color: #f9f9f9;
+            border: 1px dashed #ccc;
+            padding: 1rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            border-radius: 5px;
+        }
+        
+        .ad-container p {
+            color: #777;
+            margin-bottom: 0.5rem;
+        }
+        
+        .popular-posts ul {
+            list-style: none;
+        }
+        
+        .popular-posts ul li {
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .popular-posts ul li a {
+            color: var(--dark-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .popular-posts ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .categories ul {
+            list-style: none;
+        }
+        
+        .categories ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .categories ul li a {
+            display: block;
+            padding: 0.5rem;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .categories ul li a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            text-align: left;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 1.5rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                margin: 1rem auto 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .content-area, .sidebar {
+                flex: 1 1 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .filter-options {
+                justify-content: center;
+            }
+            
+            .search-box input {
+                width: 70%;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">Blog<span>Master</span> Pro</a>
+            <button class="mobile-menu-btn">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="categories.html">Categories</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Create, Publish & Monetize Your Content</h1>
+            <p>A fully responsive blogging platform with SEO optimization and AdSense integration to help you grow your audience and revenue.</p>
+            <a href="#start-blogging" class="btn btn-primary">Start Blogging Now</a>
+        </div>
+    </section>
+    
+    <!-- Main Content Area -->
+    <div class="container main-content">
+        <!-- Content Area -->
+        <main class="content-area" id="start-blogging">
+            <!-- Search and Filter Section -->
+            <div class="card search-container">
+                <h2>Find Your Perfect Blog Post</h2>
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Search blog posts...">
+                    <button id="search-btn">Search</button>
+                </div>
+                <div class="filter-options">
+                    <button class="filter-btn active" data-category="all">All</button>
+                    <button class="filter-btn" data-category="technology">Technology</button>
+                    <button class="filter-btn" data-category="lifestyle">Lifestyle</button>
+                    <button class="filter-btn" data-category="business">Business</button>
+                    <button class="filter-btn" data-category="health">Health</button>
+                    <button class="filter-btn" data-category="travel">Travel</button>
+                </div>
+            </div>
+            
+            <!-- Ad Space (Top of Content) -->
+            <div class="ad-container">
+                <p>Advertisement</p>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+                <!-- Your Ad Unit -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-4165898074652500"
+                     data-ad-slot="YOUR_AD_UNIT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            
+            <!-- Blog Posts Section -->
+            <div class="card blog-posts-container">
+                <h2>Latest Blog Posts</h2>
+                
+                <div class="blog-post" data-category="technology">
+                    <h3>The Future of Artificial Intelligence in 2023</h3>
+                    <div class="meta">Posted on January 15, 2023 | Technology</div>
+                    <div class="excerpt">Artificial intelligence continues to evolve at a rapid pace. In this post, we explore the latest advancements and what they mean for businesses and consumers alike...</div>
+                    <a href="post1.html" class="read-more">Read More →</a>
+                </div>
+                
+                <div class="blog-post" data-category="business">
+                    <h3>5 Strategies for Scaling Your Startup</h3>
+                    <div class="meta">Posted on January 10, 2023 | Business</div>
+                    <div class="excerpt">Scaling a startup requires careful planning and execution. Learn the five key strategies that successful entrepreneurs use to grow their businesses sustainably...</div>
+                    <a href="post2.html" class="read-more">Read More →</a>
+                </div>
+                
+                <div class="blog-post" data-category="health">
+                    <h3>The Science Behind Intermittent Fasting</h3>
+                    <div class="meta">Posted on January 5, 2023 | Health</div>
+                    <div class="excerpt">Intermittent fasting has gained popularity as a health and weight loss strategy. But what does the science say? We examine the research behind this eating pattern...</div>
+                    <a href="post3.html" class="read-more">Read More →</a>
+                </div>
+                
+                <div class="blog-post" data-category="travel">
+                    <h3>Hidden Gems: Off-the-Beaten-Path Destinations for 2023</h3>
+                    <div class="meta">Posted on December 28, 2022 | Travel</div>
+                    <div class="excerpt">Skip the crowded tourist spots this year. We've compiled a list of breathtaking destinations that remain relatively undiscovered by the masses...</div>
+                    <a href="post4.html" class="read-more">Read More →</a>
+                </div>
+                
+                <div class="blog-post" data-category="lifestyle">
+                    <h3>Minimalism: Living With Less for a More Fulfilling Life</h3>
+                    <div class="meta">Posted on December 20, 2022 | Lifestyle</div>
+                    <div class="excerpt">The minimalist lifestyle isn't just about having fewer possessions. It's about making room for what truly matters. Here's how to get started...</div>
+                    <a href="post5.html" class="read-more">Read More →</a>
+                </div>
+            </div>
+            
+            <!-- Ad Space (Middle of Content) -->
+            <div class="ad-container">
+                <p>Advertisement</p>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+                <!-- Your Ad Unit -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-4165898074652500"
+                     data-ad-slot="YOUR_AD_UNIT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </main>
+        
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- About Widget -->
+            <div class="card about-widget">
+                <h2>About BlogMaster Pro</h2>
+                <p>BlogMaster Pro is a responsive blogging platform designed to help content creators publish, optimize, and monetize their content with ease.</p>
+                <a href="about.html" class="btn btn-secondary" style="display: inline-block; margin-top: 1rem;">Learn More</a>
+            </div>
+            
+            <!-- Ad Space (Sidebar Top) -->
+            <div class="ad-container">
+                <p>Advertisement</p>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+                <!-- Your Ad Unit -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-4165898074652500"
+                     data-ad-slot="YOUR_AD_UNIT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            
+            <!-- Popular Posts Widget -->
+            <div class="card popular-posts">
+                <h2>Popular Posts</h2>
+                <ul>
+                    <li><a href="popular1.html">10 Productivity Hacks for Remote Workers</a></li>
+                    <li><a href="popular2.html">The Complete Guide to SEO in 2023</a></li>
+                    <li><a href="popular3.html">How to Build a Personal Brand Online</a></li>
+                    <li><a href="popular4.html">Best Budget Travel Destinations This Year</a></li>
+                    <li><a href="popular5.html">Plant-Based Diet: Benefits and Meal Plans</a></li>
+                </ul>
+            </div>
+            
+            <!-- Categories Widget -->
+            <div class="card categories">
+                <h2>Categories</h2>
+                <ul>
+                    <li><a href="category-tech.html" data-category="technology">Technology</a></li>
+                    <li><a href="category-business.html" data-category="business">Business</a></li>
+                    <li><a href="category-health.html" data-category="health">Health & Wellness</a></li>
+                    <li><a href="category-lifestyle.html" data-category="lifestyle">Lifestyle</a></li>
+                    <li><a href="category-travel.html" data-category="travel">Travel</a></li>
+                    <li><a href="category-education.html" data-category="education">Education</a></li>
+                </ul>
+            </div>
+            
+            <!-- Ad Space (Sidebar Bottom) -->
+            <div class="ad-container">
+                <p>Advertisement</p>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+                <!-- Your Ad Unit -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-4165898074652500"
+                     data-ad-slot="YOUR_AD_UNIT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </aside>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>BlogMaster Pro helps content creators build beautiful, SEO-optimized blogs that generate revenue through advertising and affiliate marketing.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <ul>
+                        <li><a href="https://twitter.com/blogmasterpro">Twitter</a></li>
+                        <li><a href="https://facebook.com/blogmasterpro">Facebook</a></li>
+                        <li><a href="https://instagram.com/blogmasterpro">Instagram</a></li>
+                        <li><a href="https://pinterest.com/blogmasterpro">Pinterest</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for blogging tips and updates.</p>
+                    <form id="newsletter-form">
+                        <input type="email" placeholder="Your email address" required style="width: 100%; padding: 0.5rem; margin: 0.5rem 0; border-radius: 5px; border: 1px solid #ccc;">
+                        <button type="submit" class="btn btn-secondary" style="width: 100%;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 BlogMaster Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+        });
+        
+        // Search Functionality
+        document.getElementById('search-btn').addEventListener('click', function() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const blogPosts = document.querySelectorAll('.blog-post');
+            
+            blogPosts.forEach(post => {
+                const title = post.querySelector('h3').textContent.toLowerCase();
+                const excerpt = post.querySelector('.excerpt').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
+                    post.style.display = 'block';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+        });
+        
+        // Filter Functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                const blogPosts = document.querySelectorAll('.blog-post');
+                
+                if (category === 'all') {
+                    blogPosts.forEach(post => {
+                        post.style.display = 'block';
+                    });
+                } else {
+                    blogPosts.forEach(post => {
+                        if (post.getAttribute('data-category') === category) {
+                            post.style.display = 'block';
+                        } else {
+                            post.style.display = 'none';
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Newsletter Form Submission
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            alert(`Thank you for subscribing with ${email}!`);
+            this.reset();
+        });
+        
+        // Lazy Loading for Images (would be added if there were images)
+        // document.addEventListener("DOMContentLoaded", function() {
+        //     const lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+        //     
+        //     if ("IntersectionObserver" in window) {
+        //         let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+        //             entries.forEach(function(entry) {
+        //                 if (entry.isIntersecting) {
+        //                     let lazyImage = entry.target;
+        //                     lazyImage.src = lazyImage.dataset.src;
+        //                     lazyImage.classList.remove("lazy");
+        //                     lazyImageObserver.unobserve(lazyImage);
+        //                 }
+        //             });
+        //         });
+        //         
+        //         lazyImages.forEach(function(lazyImage) {
+        //             lazyImageObserver.observe(lazyImage);
+        //         });
+        //     }
+        // });
+    </script>
+    
+    <!-- Google Analytics (replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-XXXXX-Y');
+    </script>
+</body>
+</html>
